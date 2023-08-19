@@ -77,7 +77,7 @@ positive_prob = model.predict_sentiment(text_to_predict)
 
 ###### 	6.1ui界面
 
-![](img\image1.png)
+<img src="\img\image1.png" alt="s" style="zoom:67%;" />
 
 ###### 	6.2准确率
 
