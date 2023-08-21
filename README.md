@@ -24,19 +24,19 @@
 
 ​	flask ==  1.1.2
 
-​	jinjia2 == 2.11.3
-
 ##### 3.主要脚本功能
 
 ​	main.py - 构建用户界面
 
 ​	sentiAnalysisModel.py - 核心代码，构建模型，封装接口
 
+​	demo_standby - 备用demo
+
 ##### 4.如何使用
 
 ###### 	**4.1运行demo**
 
-​		`python demo.py`即可进入ui界面，程序执行过程可在终端查看，用于分析的文本可直接从test_sentence.txt中复制。请注意，模型已经训练至一个较好的状态，重新训练后可能效果会降低。输入文本请尽量与汽车的体验有关。
+​		`./demo.bat`或点击demo.bat文件即可进入ui界面，程序执行过程可在终端查看，用于分析的文本可直接从test_sentence.txt中复制。请注意，模型已经训练至一个较好的状态，重新训练后可能效果会降低。输入文本请尽量与汽车的体验有关。
 
 ###### 	**4.2接口调用**
 
@@ -71,23 +71,25 @@ model.test_set()
 positive_prob = model.predict_sentiment(text_to_predict)
 ```
 
-##### 5.常见错误
+##### 5.demo演示
 
-​	如果ui界面出现死机，一般是由于正在执行某项任务，稍等即可。测试测试集需要几十秒的时间。
+###### 	5.1ui界面
 
-​	如果ui界面提示服务器忙碌，可能由程序初始化未完成导致，稍等刷新界面即可。其余错误一般由依赖包版本不匹配导致，可根据终端报错排查。
+<img src=".\img\image1.png" alt="image1" style="zoom: 67%;" />
 
-##### 6.demo演示
+###### 	5.2准确率
 
-###### 	6.1ui界面
+​	使用30000条数据进行训练，30000条数据进行评估，准确率为94%
 
-<img src=".\img\image1.png" alt="s" style="zoom:67%;" />
+<img src=".\img\image2.png" alt="image2" style="zoom:67%;" />
 
-###### 	6.2准确率
+##### 6.错误处理
 
-​	使用40000条数据进行训练，30000条数据进行评估，准确率为94%
+​	错误一般由依赖包版本不匹配导致，根据终端报错排查。web网页偶有未连接服务器的情况，是因为模型初始化需要一定时间，稍等后刷新界面即可。
 
-<img src=".\img\image2.png" alt="image2" style="zoom: 67%;" />
+​	在实际的非开发主机测试中（在另外两台计算机运行该项目），发现flask版本依赖较重，若网页版demo因为flask依赖包的版本原因无法运行，可执行python demo_standby.py启动备用demo，该demo使用tkinter编写ui，具体功能与demo相同。若备用ui卡住，说明正在执行某项任务，稍等片刻即可。如下图是备用demo的界面。
+
+​	<img src=".\img\image3.png" alt="image3" style="zoom:80%;" />
 
 ##### 7.核心代码分析
 

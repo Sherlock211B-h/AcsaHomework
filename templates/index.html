@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文本情感分析系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .input-box {
+            width: 90%; /* 调整文本框宽度 */
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>中文文本情感分析系统（以汽车评价为例）</h1>
+    <div class="container">
+        <div class="input-container">
+            <textarea class="input-box" id="inputText" placeholder="请输入对汽车的评价..." rows="5"></textarea>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="executeFunction('analyze')">文本分析</button>
+            <button class="button" onclick="executeFunction('test')">测试集测试</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function executeFunction(functionName) {
+            var inputText = document.getElementById("inputText").value;
+            var resultElement = document.getElementById("result");
+            var function_name = "";
+            if (functionName == 'analyze') function_name = "文本分析";
+            else function_name = "测试集测试"
+            resultElement.innerHTML = "正在进行" + function_name + "，请稍后...";
+
+            fetch("/execute_function", {
+                method: "POST",
+                body: JSON.stringify({ function_name: functionName, input_text: inputText }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                resultElement.innerHTML = data;
+            });
+        }
+    </script>
+</body>
+</html>
