@@ -51,7 +51,7 @@ class SentimentAnalysisApp:
 
     def test_model(self):
         messagebox.showinfo("提示", "正在测试测试集，请稍后...")
-        accuracy = self.model.test_set()
+        accuracy = 100 * self.model.test_set()
         self.result_label.config(text=f"测试完成（40000条评论数据），测试集准确率为{accuracy:.2f}%")
 
 if __name__ == "__main__":
