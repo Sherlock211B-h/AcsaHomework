@@ -5,7 +5,6 @@ email: 13337649640@163.com
 
 import torch
 import torch.nn as nn
-import flask
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from torch.nn.utils.rnn import pack_padded_sequence
@@ -189,7 +188,6 @@ if __name__ == "__main__":
     print("test programa")
     print(torch.__version__)
     print(jieba.__version__)
-    print(flask.__version__)
     saModel = SAModel()
     '''
     重新训练模型
