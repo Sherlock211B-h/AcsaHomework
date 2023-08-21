@@ -71,17 +71,19 @@ positive_prob = model.predict_sentiment(text_to_predict)
 
 ##### 5.常见错误
 
-​	错误一般由依赖包版本不匹配导致，可`python  sentiAnalysisModel.py`根据终端报错排查。
+​	如果ui界面提示服务器忙碌，可能由程序初始化未完成导致，稍等刷新界面即可。其余错误一般由依赖包版本不匹配导致，可`python  sentiAnalysisModel.py`根据终端报错排查。
 
 ##### 6.demo演示
 
 ###### 	6.1ui界面
 
-<img src="\img\image1.png" alt="s" style="zoom:67%;" />
+<img src=".\img\image1.png" alt="s" style="zoom:67%;" />
 
 ###### 	6.2准确率
 
 ​	使用40000条数据进行训练，30000条数据进行评估，准确率为94%
+
+<img src=".\img\image2.png" alt="image2" style="zoom: 67%;" />
 
 ##### 7.核心代码分析
 
