@@ -5,6 +5,8 @@ from sentiAnalysisModel import SAModel as model
 app = Flask(__name__)
 
 def analyze_sentiment(saModel, text):
+    if text == "":
+        return "文本为空，请输入文本。"
     print(text)
     print("Running test on the text...")
     positive_prob = saModel.predict_sentiment(text)
